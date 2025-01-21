@@ -1,10 +1,11 @@
 <template>
     <div>
-     <NavBar/>
+        
+        <NavBar />
 
-     <main>
-        <slot></slot>
-     </main>
+        <main>
+            <slot></slot>
+        </main>
     </div>
 </template>
 
@@ -14,6 +15,4 @@ import NavBar from '~/src/components/NavBar.vue';
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

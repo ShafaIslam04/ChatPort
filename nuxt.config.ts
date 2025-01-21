@@ -15,4 +15,9 @@ export default defineNuxtConfig({
       }
   }
 }
+
 })
+
+function defineNuxtConfig(arg0: { compatibilityDate: string; devtools: { enabled: boolean; }; modules: string[]; primevue: { options: { theme: { preset: any; }; }; }; }) {
+  throw new Error('Function not implemented.');
+}
