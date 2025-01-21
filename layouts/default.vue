@@ -13,6 +13,4 @@ import NavBar from '~/src/components/NavBar.vue';
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
