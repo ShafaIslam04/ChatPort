@@ -2,7 +2,7 @@
     <div class="create-user">
       <h1>Welcome to Chat App</h1>
       <p>Create your username and assign a role:</p>
-      
+  
       <div class="form">
         <input 
           v-model="username" 
@@ -10,12 +10,10 @@
           class="input"
           @keyup.enter="createUser" 
         />
-        
         <select v-model="role" class="role-select">
           <option value="user">User</option>
           <option value="admin">Admin</option>
         </select>
-  
         <button @click="createUser" class="btn">Create User</button>
       </div>
   
@@ -40,13 +38,13 @@
       return;
     }
   
-    if (chatStore.users.some(user => user.username === username.value.trim())) {
+    if (chatStore.state.value.users.some(user => user.username === username.value.trim())) {
       errorMessage.value = 'Username already exists. Please choose another.';
       return;
     }
   
     chatStore.addUser(username.value.trim(), role.value);
-    router.push('/user'); // Redirect to the user page
+    router.push('/user');
   };
   </script>
   
