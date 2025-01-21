@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.13.1",
     "@pinia/nuxt": "^0.9.0",
     "@primevue/themes": "^4.2.5",
@@ -21,5 +22,19 @@
   },
   "devDependencies": {
     "@primevue/nuxt-module": "^4.2.5"
-  }
+  },
+  "version": "1.0.0",
+  "description": "Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShafaIslam04/ChatPort.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShafaIslam04/ChatPort/issues"
+  },
+  "homepage": "https://github.com/ShafaIslam04/ChatPort#readme"
 }
