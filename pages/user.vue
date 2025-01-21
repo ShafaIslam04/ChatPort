@@ -22,7 +22,7 @@
   import { useChatStore } from '~/stores/chat';
   import { onMounted } from 'vue';
   
-  const chatStore = useChatStore();
+  const chatStore  = useChatStore();
   
   onMounted(() => {
     chatStore.initialize();
