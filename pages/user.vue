@@ -72,39 +72,10 @@
             <h3 class="text-lg font-semibold text-gray-700 mb-2">Start a Chat</h3>
             
             <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Select User</label>
-                <select 
-                  v-model="selectedUser"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">Select a user</option>
-                  <option 
-                    v-for="user in chatStore.state.value.users" 
-                    :key="user.username" 
-                    :value="user.username"
-                  >
-                    {{ user.username }}
-                  </option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Your Role</label>
-                <select 
-                  v-model="chatStore.state.value.currentRole"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="user">User</option>
-                  <option value="admin">Admin</option>
-                </select>
-              </div>
-
               <button 
-                @click="startChat" 
                 class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200"
               >
-                Start Chat
+              <NuxtLink to="/chat">Start Chat</NuxtLink>
               </button>
             </div>
           </div>
@@ -138,17 +109,6 @@ const createUser = () => {
   chatStore.addUser(username.value.trim(), role.value);
   username.value = '';
   role.value = 'user';
-};
-
-const startChat = () => {
-  if (!selectedUser.value) {
-    errorMessage.value = 'Please select a user to chat with.';
-    return;
-  }
-
-  chatStore.state.value.selectedUser = selectedUser.value;
-  errorMessage.value = '';
-  router.push('/chat');
 };
 </script>
 
