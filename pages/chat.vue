@@ -14,6 +14,7 @@
           :class="msg.role === 'admin' ? 'message admin' : 'message user'"
         >
           <span>{{ msg.message }}</span>
+          
         </div>
       </div>
   

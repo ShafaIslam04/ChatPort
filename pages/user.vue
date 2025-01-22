@@ -65,7 +65,7 @@ const router = useRouter();
 const chatStore = useChatStore();
 const username = ref('');
 const role = ref('user');
-const selectedUser = ref(null);
+const selectedUser = ref('');
 const errorMessage = ref('');
 
 const createUser = () => {
