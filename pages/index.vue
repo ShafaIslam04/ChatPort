@@ -1,89 +1,24 @@
 <template>
-    <!-- <div class="create-user"
-      
-      <h1>Welcome to Chat App</h1>
-      <p>Create your username and assign a role:</p>
-  
-      <div class="form">
-        <input 
-          v-model="username" 
-          placeholder="Enter username" 
-          class="input"
-          @keyup.enter="createUser" 
-        />
-        <select v-model="role" class="role-select">
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-        <button @click="createUser" class="btn">Create User</button>
+ <div class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+      <div class="max-w-7xl mx-auto px-6 lg:px-20 text-center">
+        <h1 class="text-4xl lg:text-6xl font-bold text-indigo-800 mb-6">
+          Welcome to ChatPort!
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 mb-10">
+          Simplify your group conversations with our seamless and intuitive chat platform.
+        </p>
+        <NuxtLink
+          to="/user"
+          class="inline-block bg-blue-600 text-white text-lg font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-200"
+        >
+          Start Chatting Now
+        </NuxtLink>
       </div>
-  
-      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-    </div> -->
-
-    <h1>This is home Page</h1>
-  </template>
+    </div>
+</template>
   
   <script setup>
-  // import { useRouter } from 'vue-router';
-  // import { useChatStore } from '~/stores/chat';
-  // import { ref } from 'vue';
-  
-  // const username = ref('');
-  // const role = ref('user');
-  // const errorMessage = ref('');
-  // const chatStore = useChatStore();
-  // const router = useRouter();
-  
-  // const createUser = () => {
-  //   if (username.value.trim() === '') {
-  //     errorMessage.value = 'Username cannot be empty.';
-  //     return;
-  //   }
-  
-  //   if (chatStore.state.value.users.some(user => user.username === username.value.trim())) {
-  //     errorMessage.value = 'Username already exists. Please choose another.';
-  //     return;
-  //   }
-  
-  //   chatStore.addUser(username.value.trim(), role.value);
-  //   router.push('/user');
-  // };
+
   </script>
   
-  <style scoped>
-  .create-user {
-    text-align: center;
-    margin-top: 50px;
-  }
-  .form {
-    margin: 20px 0;
-  }
-  .input {
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
-    margin-right: 10px;
-  }
-  .role-select {
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
-    margin-right: 10px;
-  }
-  .btn {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
-  </style>
   
