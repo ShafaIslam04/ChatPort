@@ -1,5 +1,6 @@
 <template>
-    <div class="create-user">
+    <!-- <div class="create-user"
+      
       <h1>Welcome to Chat App</h1>
       <p>Create your username and assign a role:</p>
   
@@ -18,34 +19,36 @@
       </div>
   
       <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-    </div>
+    </div> -->
+
+    <h1>This is home Page</h1>
   </template>
   
   <script setup>
-  import { useRouter } from 'vue-router';
-  import { useChatStore } from '~/stores/chat';
-  import { ref } from 'vue';
+  // import { useRouter } from 'vue-router';
+  // import { useChatStore } from '~/stores/chat';
+  // import { ref } from 'vue';
   
-  const username = ref('');
-  const role = ref('user');
-  const errorMessage = ref('');
-  const chatStore = useChatStore();
-  const router = useRouter();
+  // const username = ref('');
+  // const role = ref('user');
+  // const errorMessage = ref('');
+  // const chatStore = useChatStore();
+  // const router = useRouter();
   
-  const createUser = () => {
-    if (username.value.trim() === '') {
-      errorMessage.value = 'Username cannot be empty.';
-      return;
-    }
+  // const createUser = () => {
+  //   if (username.value.trim() === '') {
+  //     errorMessage.value = 'Username cannot be empty.';
+  //     return;
+  //   }
   
-    if (chatStore.state.value.users.some(user => user.username === username.value.trim())) {
-      errorMessage.value = 'Username already exists. Please choose another.';
-      return;
-    }
+  //   if (chatStore.state.value.users.some(user => user.username === username.value.trim())) {
+  //     errorMessage.value = 'Username already exists. Please choose another.';
+  //     return;
+  //   }
   
-    chatStore.addUser(username.value.trim(), role.value);
-    router.push('/user');
-  };
+  //   chatStore.addUser(username.value.trim(), role.value);
+  //   router.push('/user');
+  // };
   </script>
   
   <style scoped>
