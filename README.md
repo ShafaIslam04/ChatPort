@@ -1,75 +1,99 @@
-# Nuxt Minimal Starter
+# ChatPort - Real-Time Chat Application
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Overview
+ChatPort is a modern chat application built with Nuxt.js and Vue.js that enables real-time communication between users. The application features a clean, intuitive interface and supports both user and admin roles for flexible communication.
 
-## Setup
+## Features
 
-Make sure to install dependencies:
+### 1. User Management
+- Create new users with username
+- Assign roles (User/Admin)
+- View list of all registered users
+- Visual distinction between admin and regular users
 
-```bash
-# npm
-npm install
+### 2. Chat Interface
+- Real-time messaging
+- Role-based message display
+  - Admin messages appear on the right (blue background)
+  - User messages appear on the left (white background)
+- Message filtering based on selected user
+- User role switching during chat
+- Message persistence using localStorage
 
-# pnpm
-pnpm install
+### 3. UI/UX Features
+- Modern, responsive design
+- Gradient headers and clean layout
+- Message bubbles with sender information
+- User avatars with initials
+- Intuitive navigation
 
-# yarn
-yarn install
+## Technical Stack
 
-# bun
-bun install
-```
+### Frontend
+- Nuxt.js 3
+- Vue.js 3
+- TailwindCSS for styling
+- PrimeVue for UI components
 
-## Development Server
+### State Management
+- Pinia for state management
+- Local storage for data persistence
 
-Start the development server on `http://localhost:3000`:
+## Project Structure
+├── components/
+│ └── Navbar.vue # Global navigation component
+├── pages/
+│ ├── index.vue # Landing page
+│ ├── user.vue # User management page
+│ └── chat.vue # Chat interface
+├── stores/
+│ └── chat.js # Chat state management
+└── layouts/
+└── default.vue # Default layout template
 
-```bash
-# npm
-npm run dev
 
-# pnpm
-pnpm dev
+## Key Components
 
-# yarn
-yarn dev
+### User Management (user.vue)
+- User creation interface
+- Role selection
+- User list display
+- Navigation to chat
 
-# bun
-bun run dev
-```
+### Chat Interface (chat.vue)
+- Real-time message display
+- User selection dropdown
+- Role switching
+- Message input with send button
 
-## Production
+### Navigation (Navbar.vue)
+- Consistent navigation across pages
+- Responsive design
+- Brand identity
 
-Build the application for production:
+## Future Enhancements
+1. Real-time backend integration
+2. User authentication
+3. Message encryption
+4. File sharing capabilities
+5. User status indicators
+6. Message read receipts
+7. Group chat functionality
+8. Message search functionality
 
-```bash
-# npm
-npm run build
+## Getting Started
 
-# pnpm
-pnpm build
+1. Install dependencies:
 
-# yarn
-yarn build
+  npm install
 
-# bun
-bun run build
-```
+2. Run development server:
 
-Locally preview production build:
+  npm run dev
 
-```bash
-# npm
-npm run preview
+3. Build for production:
 
-# pnpm
-pnpm preview
+  npm run build
 
-# yarn
-yarn preview
 
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+This documentation provides a comprehensive overview of the ChatPort project, its features, technical stack, and structure. It can be used as a reference for developers working on the project or for presenting the project to stakeholders.
