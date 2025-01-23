@@ -1,45 +1,55 @@
-import { reactive, ref, onMounted } from 'vue';
 
-export const useChatStore = () => {
-  
-  const state = ref({
-    users: [], 
-    currentUser: null,
-  });
+import { getData, setData } from './../composables/UseFetch';
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
-  
-  const initialize = () => {
-    if (process.client) {
-      const storedUsers = JSON.parse(localStorage.getItem('users'));
-      if (storedUsers) {
-        state.users = storedUsers;
-      }
-    }
-  };
+export const useChatStore = defineStore('chat',()=>{
+        const users = ref([]);
+        const currentUser = ref(null);
+        const currentRole = ref('user');
+        const selectedUser = ref(null);
+        const userMessages = ref([])
 
-  
-  const addUser = (username, role = 'user') => {
-    if (!state.users.some(user => user.username === username)) {
-      const newUser = { username, role };
-      state.users.push(newUser);
+       users.value = getData('users') || [],
+       currentUser.value = getData('currentUser') || null,
+        selectedUser.value = getData('selecteduser') || null,
+        userMessages.value = getData('userMessages') || []
+       
+      const addUser = (username, role = 'user') => {
+            if (!users.value.some(user => user.username === username)) {
+              const newUser = { username, role };
+              users.value.push(newUser);
+              setData('users',JSON.stringify(users.value))
+              
+            }
+            currentRole.value = role;
+            setData('currentUser', JSON.stringify(username));
+          };
+        
+          const sendMessage = (from, to, role, message) => {
+                if (message.trim()) {
+                  userMessages.value.push({ from, to, role, message });
+                  setData('userMessages', JSON.stringify(userMessages.value));
+                }
+              };
 
-      
-      if (process.client) {
-        localStorage.setItem('users', JSON.stringify(state.users));
-      }
-    }
-    state.currentUser = username;
-  };
+       return {
+        users,
+        currentUser,
+        currentRole,
+        selectedUser,
+        userMessages,
+        addUser,
+        sendMessage
+       }
+})
 
 
-  onMounted(() => {
-    initialize();
-  });
 
-  
-  return {
-    state,
-    initialize,
-    addUser,
-  };
-};
+
+
+
+
+
+
+

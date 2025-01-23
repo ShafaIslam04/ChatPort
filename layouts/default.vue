@@ -1,18 +1,14 @@
 <template>
-    <div>
-        
-        <NavBar />
-
-        <main>
-            <slot></slot>
-        </main>
-    </div>
+  <div class="min-h-screen bg-gray-50">
+    <Navbar />
+    <main class="max-w-6xl mx-auto px-4 py-6">
+      <slot />
+    </main>
+  </div>
 </template>
 
 <script setup>
-import NavBar from '~/src/components/NavBar.vue';
-
-
+import Navbar from '~/components/Navbar.vue';
 </script>
 
 <style scoped></style>

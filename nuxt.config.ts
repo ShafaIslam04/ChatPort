@@ -1,8 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import Aura from '@primevue/themes/aura';
+import { defineNuxtConfig } from 'nuxt/config';
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
+  ssr:false,
   modules: [
     '@nuxtjs/tailwindcss',
     '@primevue/nuxt-module',
@@ -13,11 +16,8 @@ export default defineNuxtConfig({
       theme: {
           preset: Aura
       }
+    }
   }
-}
-
 })
 
-function defineNuxtConfig(arg0: { compatibilityDate: string; devtools: { enabled: boolean; }; modules: string[]; primevue: { options: { theme: { preset: any; }; }; }; }) {
-  throw new Error('Function not implemented.');
-}
+
