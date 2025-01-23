@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
      <div class="bg-white rounded-lg shadow-md p-6">
         <h2 v-if="chatStore?.currentUser" class="text-2xl font-bold text-gray-800 mb-4">
           Welcome, {{ chatStore?.currentUser}}
@@ -41,4 +41,4 @@
 
 <style>
 
-</style>
+</style> -->
