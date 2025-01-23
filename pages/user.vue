@@ -1,16 +1,16 @@
 <template>
   <div class="max-w-6xl mx-auto">
     <div class="grid md:grid-cols-2 gap-8">
-      <!-- Users List Section -->
+     
       <div class="bg-white rounded-lg shadow-md p-6">
-        <h2 v-if="chatStore.state.value.currentUser" class="text-2xl font-bold text-gray-800 mb-4">
-          Welcome, {{ chatStore.state.value.currentUser }}
+        <h2 v-if="chatStore.value?.currentUser" class="text-2xl font-bold text-gray-800 mb-4">
+          Welcome, {{ chatStore.value?.currentUser}}
         </h2>
         <h3 class="text-xl font-semibold text-gray-700 mb-4">Users List</h3>
 
-        <div v-if="chatStore.state.value.users.length > 0" class="space-y-3">
+        <div v-if="chatStore.users?.length > 0" class="space-y-3">
           <div
-            v-for="user in chatStore.state.value.users"
+            v-for="user in chatStore?.users"
             :key="user.username"
             class="flex items-center justify-between p-4 rounded-lg transition-all duration-200"
             :class="user.role === 'admin' ? 'bg-indigo-50' : 'bg-gray-50'"
@@ -31,10 +31,13 @@
             </div>
           </div>
         </div>
-        <p v-else class="text-gray-500 text-center py-4">No users available</p>
+
+        <p v-else class="text-gray-500 text-center py-4">No users available
+          
+        </p>
       </div>
 
-      <!-- Create User Section -->
+      
       <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-2xl font-bold text-gray-800 mb-6">Create User</h2>
         <div class="space-y-4">
@@ -88,11 +91,9 @@
 <script setup>
 import { ref } from 'vue';
 import { useChatStore } from '~/stores/chat';
-const router = useRouter();
 const chatStore = useChatStore();
 const username = ref('');
 const role = ref('user');
-const selectedUser = ref('');
 const errorMessage = ref('');
 
 const createUser = () => {
@@ -101,7 +102,7 @@ const createUser = () => {
     return;
   }
 
-  if (chatStore.state.value.users.some(user => user.username === username.value.trim())) {
+  if (chatStore?.value?.users.some(user => user.username === username.value.trim())) {
     errorMessage.value = 'Username already exists.';
     return;
   }

@@ -1,30 +1,31 @@
 <template>
   <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg min-h-[80vh] flex flex-col">
-    <!-- Chat Header -->
+  
     <div class="border-b p-4 bg-gradient-to-r from-indigo-600 to-indigo-700 rounded-t-lg">
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
           <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
             <span class="text-xl font-bold text-indigo-600">
-              {{ chatStore.state.value.currentUser?.[0]?.toUpperCase() }}
+              {{ chatStore.currentUser[0].toUpperCase() }}
             </span>
           </div>
           <div>
             <h2 class="text-xl font-semibold text-white">
-              {{ chatStore.state.value.currentUser }}
+              {{ chatStore?.currentUser }}
             </h2>
           </div>
         </div>
         
         <div class="flex space-x-4">
-          <!-- User List Dropdown -->
+          
           <select 
+            v-on:change="handleSelectedUser"
             v-model="selectedUser"
             class="px-4 py-2 bg-white rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
           >
             <option value="">Select User</option>
             <option 
-              v-for="user in chatStore.state.value.users" 
+              v-for="user in chatStore?.users" 
               :key="user.username"
               :value="user.username"
             >
@@ -32,7 +33,7 @@
             </option>
           </select>
 
-          <!-- Role Selection -->
+          
           <select 
             v-model="currentRole"
             class="px-4 py-2 bg-white rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
@@ -44,7 +45,7 @@
       </div>
     </div>
 
-    <!-- Chat Messages -->
+    
     <div class="flex-1 p-4 overflow-y-auto bg-gray-50" style="min-height: 500px">
       <div class="space-y-4">
         <div
@@ -53,7 +54,7 @@
           class="flex"
           :class="msg.role === 'admin' ? 'justify-end' : 'justify-start'"
         >
-          <!-- Message Bubble -->
+          
           <div class="flex flex-col max-w-[75%] space-y-1">
             <span class="text-xs text-gray-500 px-2" 
               :class="msg.role === 'admin' ? 'text-right' : 'text-left'"
@@ -73,7 +74,7 @@
       </div>
     </div>
 
-    <!-- Chat Input -->
+    
     <div class="p-4 bg-white border-t">
       <div class="flex items-center space-x-4">
         <input 
@@ -98,25 +99,30 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { useChatStore } from '~/stores/chat.js';
+// import { useChatStore } from '~/stores/chat.js';
 
+// const chatStore = useChatStore();
+import { useChatStore } from '/stores/chat';
 const chatStore = useChatStore();
 const message = ref('');
-const currentRole = ref('user'); // Default role is user
+const currentRole = ref('user'); 
 const selectedUser = ref('');
 
-// Filter messages between current user and selected user
+
 const filteredMessages = computed(() => {
-  if (!selectedUser.value) return chatStore.state.value.userMessages;
-  return chatStore.state.value.userMessages.filter(
+  if (!selectedUser.value) return chatStore.userMessages;
+  return chatStore.userMessages.filter(
     m => m.from === selectedUser.value || m.to === selectedUser.value
   );
 });
+const handleSelectedUser = ()=>{
+        chatStore.currentUser = selectedUser.value ;
+}
 
 const sendMessage = () => {
   if (message.value.trim()) {
     chatStore.sendMessage(
-      selectedUser.value || chatStore.state.value.currentUser,
+      selectedUser.value || chatStore.value.currentUser,
       'all',
       currentRole.value,
       message.value.trim()
